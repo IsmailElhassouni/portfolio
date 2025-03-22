@@ -7,3 +7,17 @@ html, body {
   background: #0a0a0a;
   color:#f3f4f5
 }
+@layer utilities {
+  @keyframes load {
+    0%{
+      transform: translateX(-100%);
+    }
+    100%{
+      transform: translateX(250%);
+    }
+  }
+  .animate-loading-bar
+  {
+    animation: load 1s ease infinite;
+  }
+}
