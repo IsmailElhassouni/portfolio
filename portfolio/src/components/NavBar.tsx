@@ -17,19 +17,19 @@ export const NavBar = ({menu,setmenu}) => {
         <div className="hidden md:flex items space-x-8">
             <a href="#home"
             className="text-gray-300 hover:text-blue-500 transition-colors">
-            {" "}Home{" "}
+            Home
             </a>
             <a href="#About"
             className="text-gray-300 hover:text-blue-500 transition-colors">
-            {" "}About{" "}
+            About
             </a>
             <a href="#Projects"
             className="text-gray-300 hover:text-blue-500 transition-colors">
-            {" "}Projects{" "}
+            Projects
             </a>
             <a href="#Contact"
             className="text-gray-300 hover:text-blue-500 transition-colors">
-            {" "}Contact{" "}
+            Contact
             </a>
         </div>
         </div>

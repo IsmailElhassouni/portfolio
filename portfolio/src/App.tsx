@@ -3,6 +3,8 @@ import './App.css'
 import { useState } from 'react'
 import './index.css'
 import {NavBar} from './components/NavBar'
+import { Mobile } from './components/Mobile'
+import { Home } from './components/sections/Home'
 function App() {
   const [loading, setLoading] = useState(false)
   const [menu, setMenu] = useState(false)
@@ -14,6 +16,7 @@ function App() {
 
             <NavBar  menu={menu} setmenu={setMenu}/>
             <Mobile menu={menu} setmenu={setMenu} />
+            <Home />
           </div>
     </>
   )
