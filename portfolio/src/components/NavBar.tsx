@@ -19,7 +19,7 @@ export const NavBar = ({menu,setmenu}) => {
             className="text-gray-300 hover:text-blue-500 transition-colors">
             Home
             </a>
-            <a href="#About"
+            <a href="#about"
             className="text-gray-300 hover:text-blue-500 transition-colors">
             About
             </a>
