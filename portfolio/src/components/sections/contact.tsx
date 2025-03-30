@@ -1,6 +1,6 @@
 import { Onscroll } from "../Onscroll"
 import emailjs from "emailjs-com"
-import {useState } from "react"
+import {useState, FormEvent} from "react"
 export const Contact = () => {
     const [formdata, Setformdata] = useState({
         name: "",
@@ -8,13 +8,13 @@ export const Contact = () => {
         message: ""
     })
 
-    const hanldesub =(e) =>
+    const hanldesub =(e: FormEvent<HTMLFormElement>) =>
     {
         e.preventDefault();
         emailjs.sendForm(
             import.meta.env.VITE_serviceid,
             import.meta.env.VITE_tempid,
-            e.target,
+            e.target as HTMLFormElement,
             import.meta.env.VITE_pubKey)
         .then(() => {
            alert("Message sent successfully");

@@ -1,12 +1,17 @@
-import { useEffect, useRef  } from "react"
-export const Onscroll = ({children}) => 
-{
-    const ref = useRef(null);
+import { useEffect, useRef, ReactNode } from "react";
+
+interface OnscrollProps {
+  children: ReactNode; // Ensures children can be any valid React node
+}
+
+export const Onscroll: React.FC<OnscrollProps> = ({ children }) => {
+  const ref = useRef<HTMLDivElement | null>(null);
+
     useEffect(() =>
     {
         const observer = new IntersectionObserver(
         ([entries]) => {
-            if(entries.isIntersecting)
+            if(entries.isIntersecting && ref.current)
             {
                 ref.current.classList.add("visible");
             }
