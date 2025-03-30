@@ -1,6 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, FC } from "react";
 
-export const LoadingScreen = ({ onComplete }) => {
+interface LoadingScreenProps {
+  onComplete: () => void; // onComplete is a function that takes no arguments and returns nothing
+}
+
+export const LoadingScreen: FC<LoadingScreenProps> = ({ onComplete }) => {
   const [text, setText] = useState("");
   const fullText = "<Hello Wolrd />";
 

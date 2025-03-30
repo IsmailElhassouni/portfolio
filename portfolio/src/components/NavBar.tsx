@@ -1,6 +1,11 @@
-import { useEffect } from "react";
+import { FC, Dispatch, SetStateAction, useEffect } from "react";
 
-export const NavBar = ({ menu, setmenu }) => {
+interface NavBarProps {
+    menu: boolean;
+    setmenu: Dispatch<SetStateAction<boolean>>;
+}
+
+export const NavBar: FC<NavBarProps> = ({ menu, setmenu }) => {
     useEffect(() => {
         document.body.style.overflow = menu ? "hidden" : "";
     }, [menu]);
