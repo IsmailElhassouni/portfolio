@@ -18,7 +18,7 @@ interface MobileProps {
             className={`text-2xl font-semibold text-white my-4 transform transition-transform duration-300 ${menu ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"} `}>
             Home
             </a>
-            <a onClick={() => setmenu(false)} href="#About"
+            <a onClick={() => setmenu(false)} href="#about"
             className={`text-2xl font-semibold text-white my-4 transform transition-transform duration-300 ${menu ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"} `}>
             About
             </a>
