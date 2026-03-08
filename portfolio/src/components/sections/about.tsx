@@ -16,7 +16,7 @@ export const About = () => {
                     About Me
                 </h2>
                 <div className="rounded-xl p-8 border-white/10 border hover:-translate-y-1 transition-all">
-                    <p className="test-grey-300 mb-6">
+                    <p className="text-gray-300 mb-6">
                         Passionate about technology and innovation, I am a full-stack developer with a <br />
                         background in computer science. I have experience in developing web applications using <br />
                         modern technologies such as React, Node.js, Laravel, and MongoDB. <br />
@@ -74,14 +74,14 @@ export const About = () => {
                         className="rounded-xl p-6 border-white/10 border hover:-translate-y-1 transition-all"
                     >
                         <h3 className="text-xl font-bold mb-4">
-                            <span className="mr-2">🎓</span>Educations
+                            <span className="mr-2">🎓</span>Education
                         </h3>
-                        <ul className="list-disc list-inside text-gray-300 space-y-2">
+                        <ul className="list-disc list-outside pl-5 text-gray-300 space-y-4">
                             <li>
-                                <strong>Software Engineer</strong> - 1337 UM6P [2023-present]
+                                <strong className="text-blue-300">Software Engineer</strong> - 1337 UM6P [2023-present]
                             </li>
                             <li>
-                                <strong>Full Stack</strong> - ISTA OFPPT [2021-2023]
+                                <strong className="text-blue-300">Full Stack</strong> - ISTA OFPPT [2021-2023]
                             </li>
                         </ul>
                     </div>
@@ -92,13 +92,28 @@ export const About = () => {
                             <span className="mr-2">💼</span>Work Experience
                         </h3>
                         <div className="space-y-4 text-gray-300">
-                            <div>
-                                <h4 className="font-semibold">Full Stack at OCP: Internship (2023)</h4>
-                                <p>
-                                    Assisted in building a web application for managing the OCP Group internship requests. <br />
-                                    <strong>Technologies:</strong> Laravel, MySQL, Bootstrap, JavaScript.
-                                </p>
-                            </div>
+                        <ul className="space-y-3 text-gray-300">
+                            <li className="flex items-start gap-2">
+                                <span className="mt-2 h-1.5 w-1.5 rounded-full bg-gray-300 shrink-0" aria-hidden="true"></span>
+                                <div>
+                                    <h4 className="text-blue-300 font-semibold">Full Stack at UM6P The Forge: Internship (2025-2026)</h4>
+                                    <p>
+                                        Assisted in building web and mobile applications for one of the startups in the Forge program. <br />
+                                        <strong>Technologies:</strong> NestJS, Next.js, Firebase, React, React Native.
+                                    </p>
+                                </div>
+                            </li>
+                            <li className="flex items-start gap-2">
+                                <span className="mt-2 h-1.5 w-1.5 rounded-full bg-gray-300 shrink-0" aria-hidden="true"></span>
+                                <div>
+                                    <h4 className="text-blue-300 font-semibold">Full Stack at OCP: Internship (2023)</h4>
+                                    <p>
+                                        Assisted in building a web application for managing OCP Group internship requests. <br />
+                                        <strong>Technologies:</strong> Laravel, MySQL, Bootstrap, JavaScript.
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
                         </div>
                     </div>
                 </div>

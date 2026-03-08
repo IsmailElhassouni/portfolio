@@ -1,31 +1,40 @@
 import { Onscroll } from "../Onscroll"
 import emailjs from "emailjs-com"
-import {useState, FormEvent} from "react"
+import { useRef, useState, FormEvent } from "react"
 export const Contact = () => {
+    const [send, SetSend] = useState(false);
+    const sendingRef = useRef(false);
+    const formRef = useRef<HTMLFormElement>(null);
     const [formdata, Setformdata] = useState({
         name: "",
         email: "",
         message: ""
     })
 
-    const hanldesub =(e: FormEvent<HTMLFormElement>) =>
-    {
+    const hanldesub = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        if (sendingRef.current) return;
+        sendingRef.current = true;
+        SetSend(true);
+
         emailjs.sendForm(
             import.meta.env.VITE_serviceid,
             import.meta.env.VITE_tempid,
-            e.target as HTMLFormElement,
-            import.meta.env.VITE_pubKey)
+            formRef.current!,
+            import.meta.env.VITE_pubKey
+        )
         .then(() => {
-           alert("Message sent successfully");
-           Setformdata({ name: "", email: "", message: "" });
+            alert("Message sent successfully");
+            Setformdata({ name: "", email: "", message: "" });
         })
-        .catch((e) => 
-            {
-                console.error(e);
-                console.log( import.meta.env.VITE_serviceid, import.meta.env.VITE_tempid, import.meta.env.VITE_pubKey," import.meta.env.VITE_serviceid");
-                alert("Oops! something went wrong. Please try again.");
-            });
+        .catch((error) => {
+            console.error(error);
+            alert("Oops! Something went wrong. Please try again.");
+        })
+        .finally(() => {
+            sendingRef.current = false;
+            SetSend(false);
+        });
     }
 return (<section id="Contact" className="min-h-screen flex items-center justify-center py-20">
     <Onscroll>
@@ -34,7 +43,7 @@ return (<section id="Contact" className="min-h-screen flex items-center justify-
             Get In touch
         </h2>
             
-        <form className="space-y-6" onSubmit={hanldesub}>
+        <form ref={formRef} className="space-y-6" onSubmit={hanldesub}>
                 <div className="relative">
                         <input onChange={(e)=>Setformdata({...formdata,name:e.target.value})} value={formdata.name} type="text" id="name"  name="name" required className="w-full bg-white/10 border border-white/10 rounded px-4 py-3 text-white transition focus:outline-none focus:border-blue-500 focus:bg-blue-500/5"  
                         placeholder="name..."
@@ -46,12 +55,12 @@ return (<section id="Contact" className="min-h-screen flex items-center justify-
                         />
                 </div>
                 <div className="relative">
-                        <textarea onChange={(e)=>Setformdata({...formdata,message:e.target.value})} value={formdata.message} id="message"  name="email" rows={5} required className="w-full bg-white/5 border border-white/10 rounded px-4 py-3 text-white transition focus:outline-none focus:border-blue-500 focus:bg-blue-500/5"  
+                        <textarea onChange={(e)=>Setformdata({...formdata,message:e.target.value})} value={formdata.message} id="message"  name="message" rows={5} required className="w-full bg-white/5 border border-white/10 rounded px-4 py-3 text-white transition focus:outline-none focus:border-blue-500 focus:bg-blue-500/5"  
                         placeholder="Your message..."
                         />
                 </div>
 
-                <button type="submit" className="w-full bg-blue-500 text-white py-3 px-6 rounded font-medium transition relative overflow-hidden hover:-translate-y-0.5 hover:shadow-[0_0_15px_rgba(59,130,246,0.4)]">Send Message</button>
+                    <button disabled={send} type="submit" style={send ? { pointerEvents: "none" } : undefined} className="w-full bg-blue-500 text-white py-3 px-6 rounded font-medium transition relative overflow-hidden hover:-translate-y-0.5 hover:shadow-[0_0_15px_rgba(59,130,246,0.4)] disabled:opacity-50 disabled:cursor-not-allowed">{send ? "Sending..." : "Send Message"}</button>
         </form>
         <div className="mt-8 text-center">
                             <a
