@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Onscroll } from "../Onscroll";
 
 interface Project {
@@ -71,18 +70,6 @@ export const Projects = () => {
         links: ["https://github.com/IsmailElhassouni/Leaffliction"]
     }];
 
-    const featuredProjects = projects.slice(0, 4);
-    const additionalProjects = projects.slice(4);
-    const [activeSlide, setActiveSlide] = useState(0);
-
-    const showPrevious = () => {
-        setActiveSlide((current) => current === 0 ? additionalProjects.length - 1 : current - 1);
-    };
-
-    const showNext = () => {
-        setActiveSlide((current) => (current + 1) % additionalProjects.length);
-    };
-
     return (
         <section className="min-h-screen flex items-center justify-center py-20" id="Projects">
             <Onscroll>
@@ -90,53 +77,10 @@ export const Projects = () => {
                     <h2 className="text-3xl font-bold mb-8 bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent text-center">
                         Featured Projects
                     </h2>
-
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        {featuredProjects.map((project) => (
+                        {projects.map((project) => (
                             <ProjectCard key={project.name} project={project} />
                         ))}
-                    </div>
-
-                    <div className="mt-12">
-                        <div className="flex items-center justify-between mb-5">
-                            <h3 className="text-xl font-semibold text-white">More Projects</h3>
-                            <span className="text-sm text-gray-400">{activeSlide + 1} / {additionalProjects.length}</span>
-                        </div>
-
-                        <div className="relative overflow-hidden rounded-2xl">
-                            <div className="transition-all duration-500 ease-out">
-                                <ProjectCard project={additionalProjects[activeSlide]} />
-                            </div>
-
-                            <button
-                                type="button"
-                                onClick={showPrevious}
-                                aria-label="Show previous project"
-                                className="absolute left-3 top-1/2 -translate-y-1/2 h-10 w-10 rounded-full border border-white/20 bg-black/60 text-white backdrop-blur-sm hover:bg-blue-500/80 transition-colors"
-                            >
-                                &#8592;
-                            </button>
-                            <button
-                                type="button"
-                                onClick={showNext}
-                                aria-label="Show next project"
-                                className="absolute right-3 top-1/2 -translate-y-1/2 h-10 w-10 rounded-full border border-white/20 bg-black/60 text-white backdrop-blur-sm hover:bg-blue-500/80 transition-colors"
-                            >
-                                &#8594;
-                            </button>
-                        </div>
-
-                        <div className="flex justify-center gap-2 mt-5">
-                            {additionalProjects.map((project, index) => (
-                                <button
-                                    key={project.name}
-                                    type="button"
-                                    onClick={() => setActiveSlide(index)}
-                                    aria-label={`Show ${project.name}`}
-                                    className={`h-2 rounded-full transition-all duration-300 ${index === activeSlide ? "w-8 bg-blue-400" : "w-2 bg-white/30 hover:bg-white/60"}`}
-                                />
-                            ))}
-                        </div>
                     </div>
                 </div>
             </Onscroll>
