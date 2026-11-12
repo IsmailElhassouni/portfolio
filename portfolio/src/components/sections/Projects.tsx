@@ -41,6 +41,12 @@ export const Projects = () => {
     description:"mionia-mobile-app is a mobile application built with React Native and Expo, designed to provide users with a seamless experience on their mobile devices. It offers features such as user authentication, real-time updates, and a responsive design that adapts to various screen sizes. The app is available for both iOS and Android platforms.",
     skill:["React Native", "Expo", "TypeScript","Firebase"],
     links:[""]
+},
+{
+    name:"Leaffliction",
+    description:"Plant Leaf Disease Classification. Built an end-to-end CNN image-classification pipeline, training a model from scratch to classify plant leaf conditions. Implemented dataset loading, train/validation splitting, class balancing with six image augmentation techniques, evaluation, and top-3 predictions.",
+    skill:["Python", "TensorFlow/Keras", "OpenCV", "CNN", "Image Classification"],
+    links:[""]
 }]
     return ( <section 
     className="min-h-screen flex items-center justify-center py-20"
